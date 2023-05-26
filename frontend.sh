@@ -5,6 +5,6 @@ curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.z
 cd /usr/share/nginx/html
 unzip /tmp/frontend.zip
 #we need to copy config file
-vim /etc/nginx/default.d/roboshop.conf
+
 systemctl enable nginx
 systemctl restart nginx
