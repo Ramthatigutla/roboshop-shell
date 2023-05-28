@@ -1,5 +1,6 @@
 echo -e "\e[31m configuring node js \e[0m"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/roboshop.log
+
 echo -e "\e[32m installing nodejs\e[0m"
 yum install nodejs -y &>>/tmp/roboshop.log
 echo -e "\e[33m adding user \e[0m"
@@ -24,7 +25,7 @@ systemctl daemon-reload &>>/tmp/roboshop.log
 systemctl enable catalogue &>>/tmp/roboshop.log
 systemctl retart catalogue &>>/tmp/roboshop.log
 echo -e "\e[32m copying mongodb repo file \e[0m"
-cp /home/centos/reboshop-shell/mongodb.repo /etc/yum.repos.d/mongo.repo &>>/tmp/roboshop.log
+cp /home/centos/reboshop-shell/mongodb.repo /etc/yum.repos.d/mongodb.repo &>>/tmp/roboshop.log
 echo -e "\e[33m installing mongodb \e[0m"
 yum install mongodb-org-shell -y &>>/tmp/roboshop.log
 echo -e "\e[34m loading schema \e[0m"
