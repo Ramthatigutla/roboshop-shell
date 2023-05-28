@@ -37,4 +37,4 @@ echo -e "\e[33m installing mongodb \e[0m"
 yum install mongodb-org-shell -y &>>/tmp/roboshop.log
 
 echo -e "\e[34m loading schema \e[0m"
-mongo --host mongodb-dev.trrdops.store </app/schema/catalogue.js
+mongo --host mongodb-dev.trrdops.store </app/schema/catalogue.js  &>>/tmp/roboshop.log
