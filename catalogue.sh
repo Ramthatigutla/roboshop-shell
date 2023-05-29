@@ -31,7 +31,7 @@ systemctl enable catalogue &>>/tmp/roboshop.log
 systemctl restart catalogue &>>/tmp/roboshop.log
 
 echo -e "\e[32m copying mongodb repo file \e[0m"
-cp /home/centos/reboshop-shell/mongodb.repo /etc/yum.repos.d/mongodb.repo &>>/tmp/roboshop.log
+cp /home/centos/reboshop-shell/mongodb.repo /etc/yum.repos.d/mongo.repo &>>/tmp/roboshop.log
 
 echo -e "\e[33m installing mongodb \e[0m"
 yum install mongodb-org-shell -y &>>/tmp/roboshop.log
