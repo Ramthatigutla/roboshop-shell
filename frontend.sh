@@ -14,7 +14,7 @@ echo -e "\e[35m unzipping new downloaded nginx content \e[0m"
 unzip /tmp/frontend.zip &>>/tmp/roboshop.log
 
 echo -e "\e[35m updating frontend configuration \e[0m"
-cp /home/centos/reboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf &>>/tmp/roboshop.log
+cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf &>>/tmp/roboshop.log
 
 echo -e "\e[36m enabling nginx \e[0m"
 systemctl enable nginx &>>/tmp/roboshop.log
