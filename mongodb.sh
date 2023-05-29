@@ -5,7 +5,7 @@ echo -e "\e[31m installing mongodb \e[0m"
 yum install mongodb-org -y &>>/tmp/roboshop.log
 
 echo -e "\e[31m updating mongodb listner address using sed editor \e[0m"
-sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongodb.conf
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 
 echo -e "\e[31m restarting mongodb \e[0m"
 systemctl enable mongod &>>/tmp/roboshop.log
