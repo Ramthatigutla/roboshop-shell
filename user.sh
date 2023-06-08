@@ -30,7 +30,7 @@ systemctl daemon-reload &>>/tmp/roboshop.log
 systemctl enable user &>>/tmp/roboshop.log
 systemctl start user &>>/tmp/roboshop.log
 
-echo -e "\e[32m copying mongodb repo file \e[0m"
+echo -e "\e[32m copying mongodb repo file here \e[0m"
 cp /home/centos/roboshop-shell/user.service /etc/yum.repos.d/mongo.repo &>>/tmp/roboshop.log
 
 echo -e "\e[33m installing mongodb \e[0m"
