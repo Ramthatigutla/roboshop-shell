@@ -15,7 +15,7 @@ echo -e "\e[35m downloading application code \e[0m"
 curl -L -o /tmp/cart.zip https://roboshop-artifacts.s3.amazonaws.com/cart.zip  &>>/tmp/roboshop.log
 cd /app
 
-echo -e "\e[31m unzip application code \e[0m"
+echo -e "\e[31m unzip application code here \e[0m"
 unzip /tmp/cart.zip &>>/tmp/roboshop.log
 cd /app
 
