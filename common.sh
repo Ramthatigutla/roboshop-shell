@@ -1,23 +1,40 @@
 color="\e[32m"
-nocolor="${nocolor}"
+nocolor="\e[0m"
 log_file="/tmp/roboshop.log"
 app_path="${app_path}"
 
+stat_check() {
+  if [ $1 -eq 0 ];then
+    echo SUCCESS
+  else
+    echo FAILURE
+  fi
+}
+
 app_presetup() {
-  echo -e "$color adding user $nocolor"
+  echo -e "${color} adding user ${nocolor}"
+  id roboshop &>>$log_file
+  if [ $? -eq 1 ];then
   useradd roboshop &>>${log_file}
+  fi
+  stat_check $?
 
   echo -e "$color application directory$nocolor"
   rm -rf ${app_path} &>>${log_file}
   mkdir ${app_path}
 
+  stat_check $?
+
   echo -e "$color downloading application code $nocolor"
   curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${log_file}
   cd ${app_path}
 
+  stat_check $?
   echo -e "$color unzip application code $nocolor"
   unzip /tmp/${component}.zip &>>${log_file}
   cd ${app_path}
+
+  stat_check $?
 }
 
 systemd_setup() {
@@ -89,10 +106,12 @@ python() {
   echo -e "${color} installing python ${nocolor}"
   yum install python36 gcc python3-devel -y &>>${log_file}
 
+  stat_check $?
   app_presetup
 
   echo -e "${color} downloading the dependencies here ${nocolor}"
   pip3.6 install -r requirements.txt  &>>${log_file}
+  stat_check $?
 
   systemd_setup
 
