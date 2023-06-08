@@ -45,14 +45,14 @@ systemd_setup() {
       else
         echo FAILURE
     fi
-    echo -e "${color} system restart ${nocolor}"
+    echo -e "${color} system ${component} service ${nocolor}"
     systemctl daemon-reload  &>>${log_file}
-    systemctl enable shipping  &>>${log_file}
-    systemctl restart shipping  &>>${log_file}
+    systemctl enable ${component}  &>>${log_file}
+    systemctl restart ${component}  &>>${log_file}
     if [ $? -eq 0 ];then
-            echo SUCCESS
-          else
-            echo FAILURE
+      echo SUCCESS
+    else
+      echo FAILURE
     fi
 }
 
