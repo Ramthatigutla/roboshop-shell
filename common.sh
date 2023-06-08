@@ -45,5 +45,5 @@ mongo_schema_setup() {
   yum install mongodb-org-shell -y &>>${log_file}
 
   echo -e "${color} loading schema ${nocolor}"
-  mongo --host mongodb-dev.trrdops.store <${app_path}/schema/$component.js ${log_file}
+  mongo --host mongodb-dev.trrdops.store <${app_path}/schema/$component.js &>>${log_file}
 }
