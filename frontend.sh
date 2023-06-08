@@ -11,7 +11,7 @@ echo -e "\e[34m creating a directory to unzip downloaded content \e[0m"
 cd /usr/share/nginx/html
 unzip /tmp/frontend.zip &>>/tmp/roboshop.log
 
-echo -e "\e[35m updating frontend configuration \e[0m"
+echo -e "\e[35m updating frontend configuration for roboshop \e[0m"
 cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf &>>/tmp/roboshop.log
 
 echo -e "\e[36m enabling nginx \e[0m"
