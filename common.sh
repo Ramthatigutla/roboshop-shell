@@ -1,7 +1,7 @@
 color="\e[32m"
 nocolor="\e[0m"
 log_file="/tmp/roboshop.log"
-app_path="${app_path}"
+app_path="/app"
 
 stat_check() {
   if [ $1 -eq 0 ];then
