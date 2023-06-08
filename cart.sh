@@ -1,33 +1,36 @@
-echo -e "\e[31m configuring node js \e[0m"
-curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/roboshop.log
+source common.sh
+component=cart
 
-echo -e "\e[32m installing nodejs\e[0m"
-yum install nodejs -y &>>/tmp/roboshop.log
+echo -e "${color} configuring node js ${nocolor}"
+curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/${log_file}
 
-echo -e "\e[33m adding user \e[0m"
-useradd roboshop &>>/tmp/roboshop.log
+echo -e "${color} installing nodejs${nocolor}"
+yum install nodejs -y &>>/${log_file}
 
-echo -e "\e[34m application directory\e[0m"
-rm -rf /app &>>/tmp/roboshop.log
-mkdir /app &>>/tmp/roboshop.log
+echo -e "${color} adding user ${nocolor}"
+useradd roboshop &>>/${log_file}
 
-echo -e "\e[35m downloading application code \e[0m"
-curl -L -o /tmp/cart.zip https://roboshop-artifacts.s3.amazonaws.com/cart.zip  &>>/tmp/roboshop.log
-cd /app
+echo -e "${color} application directory${nocolor}"
+rm -rf ${app_path} &>>/${log_file}
+mkdir ${app_path} &>>/${log_file}
 
-echo -e "\e[31m unzip application code here \e[0m"
-unzip /tmp/cart.zip &>>/tmp/roboshop.log
-cd /app
+echo -e "${color} downloading application code ${nocolor}"
+curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip  &>>/${log_file}
+cd ${app_path}
 
-echo -e "\e[33m installing dependencies \e[0m"
-npm install &>>/tmp/roboshop.log
+echo -e "${color} unzip application code here ${nocolor}"
+unzip /tmp/${component}.zip &>>/${log_file}
+cd ${app_path}
 
-echo -e "\e[34m setup systemD service \e[0m"
-cp /home/centos/roboshop-shell/cart.service /etc/systemd/system/cart.service &>>/tmp/roboshop.log
+echo -e "${color} installing dependencies ${nocolor}"
+npm install &>>/${log_file}
 
-echo -e "\e[31m starting cart server \e[0m"
-systemctl daemon-reload &>>/tmp/roboshop.log
-systemctl enable cart &>>/tmp/roboshop.log
-systemctl restart cart &>>/tmp/roboshop.log
+echo -e "${color} setup systemD service ${nocolor}"
+cp /home/centos/roboshop-shell/${component}.service /etc/systemd/system/${component}.service &>>/${log_file}
+
+echo -e "${color} starting ${component} server ${nocolor}"
+systemctl daemon-reload &>>/${log_file}
+systemctl enable ${component} &>>/${log_file}
+systemctl restart ${component} &>>/${log_file}
 
 
