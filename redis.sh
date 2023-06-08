@@ -1,7 +1,7 @@
 echo -e "\e[31m installing redis repo \e[0m"
 yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>/tmp/roboshop.log
 
-echo -e "\e[31m enabling redis 6 version \e[0m"
+echo -e "\e[31m enabling redis 6 version here \e[0m"
 yum module enable redis:remi-6.2 -y  &>>/tmp/roboshop.log
 
 echo -e "\e[31m installing redis\e[0m"
