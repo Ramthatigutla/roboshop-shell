@@ -7,7 +7,7 @@ curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/sc
 echo -e "\e[31m installing rabbit mq \e[0m"
 yum install rabbitmq-server -y &>>/tmp/roboshop.log
 
-echo -e "\e[31m starting server \e[0m"
+echo -e "\e[31m starting server here \e[0m"
 systemctl enable rabbitmq-server  &>>/tmp/roboshop.log
 systemctl restart rabbitmq-server  &>>/tmp/roboshop.log
 
