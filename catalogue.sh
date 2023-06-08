@@ -36,5 +36,6 @@ cp /home/centos/roboshop-shell/mongodb.repo /etc/yum.repos.d/mongo.repo &>>/tmp/
 echo -e "\e[33m installing mongodb \e[0m"
 yum install mongodb-org-shell -y &>>/tmp/roboshop.log
 
-echo -e "\e[34m loading schema \e[0m"
+echo -e "\e[34m loading schema now \e[0m"
 mongo --host mongodb-dev.trrdops.store </app/schema/catalogue.js  &>>/tmp/roboshop.log
+
