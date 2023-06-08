@@ -8,7 +8,7 @@ echo -e "\e[31m install mysql community server \e[0m"
 yum install mysql-community-server -y &>>/tmp/roboshop.log
 
 
-echo -e "\e[31m \e[0m"
+echo -e "\e[31m enable and restart \e[0m"
 systemctl enable mysqld &>>/tmp/roboshop.log
 systemctl restart mysqld &>>/tmp/roboshop.log
 
