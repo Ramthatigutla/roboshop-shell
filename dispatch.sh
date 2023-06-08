@@ -16,7 +16,7 @@ echo -e "\e[31m unzipping dispatch content \e[0m"
 unzip /tmp/dispatch.zip  &>>/tmp/roboshop.log
 cd /app
 
-echo -e "\e[31m downloading dependencies \e[0m"
+echo -e "\e[31m downloading dependencies here \e[0m"
 go mod init dispatch  &>>/tmp/roboshop.log
 go get  &>>/tmp/roboshop.log
 go build  &>>/tmp/roboshop.log
