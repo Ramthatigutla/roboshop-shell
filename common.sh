@@ -40,11 +40,20 @@ app_presetup() {
 systemd_setup() {
     echo -e "$color setup systemD service $nocolor"
     cp /home/centos/roboshop-shell/${component}.service /etc/systemd/system/${component}.service  &>>${log_file}
-
+    if [ $? -eq 0 ];then
+        echo SUCCESS
+      else
+        echo FAILURE
+    fi
     echo -e "${color} system restart ${nocolor}"
     systemctl daemon-reload  &>>${log_file}
     systemctl enable shipping  &>>${log_file}
     systemctl restart shipping  &>>${log_file}
+    if [ $? -eq 0 ];then
+            echo SUCCESS
+          else
+            echo FAILURE
+    fi
 }
 
 nodejs() {
@@ -74,7 +83,7 @@ mongo_schema_setup() {
   echo -e "${color} loading schema ${nocolor}"
   mongo --host mongodb-dev.trrdops.store <${app_path}/schema/$component.js &>>${log_file}
 }
-mysql_schema_setp() {
+mysql_schema_setup() {
     echo -e "${color} loading mysql here ${nocolor}"
     yum install mysql -y  &>>${log_file}
 
@@ -89,15 +98,14 @@ maven() {
 
   app_presetup
 
-    echo -e "${color} download the dependencies ${nocolor}"
+  echo -e "${color} download the dependencies ${nocolor}"
   mvn clean package  &>>${log_file}
   mv target/${component}-1.0.jar shipping.jar  &>>${log_file}
 
   echo -e "${color} copying repo file ${nocolor}"
   cp /home/centos/roboshop-shell/${component}.service /etc/systemd/system/${component}.service &>>${log_file}
 
-
-
+  mysql_schema_setup
   systemd_setup
 
 }
