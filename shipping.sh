@@ -23,7 +23,7 @@ mv target/shipping-1.0.jar shipping.jar  &>>/tmp/roboshop.log
 echo -e "\e[31m copying repo file \e[0m"
 cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.service &>>/tmp/roboshop.log
 
-echo -e "\e[31m loading mysql \e[0m"
+echo -e "\e[31m loading mysql here \e[0m"
 yum install mysql -y  &>>/tmp/roboshop.log
 
 echo -e "\e[31m loading schema \e[0m"
