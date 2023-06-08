@@ -16,7 +16,7 @@ echo -e "\e[31m unzipping the content \e[0m"
 unzip /tmp/payment.zip  &>>/tmp/roboshop.log
 cd /app
 
-echo -e "\e[31m downloading the dependencies \e[0m"
+echo -e "\e[31m downloading the dependencies here \e[0m"
 pip3.6 install -r requirements.txt  &>>/tmp/roboshop.log
 
 echo -e "\e[31m copying payment services \e[0m"
