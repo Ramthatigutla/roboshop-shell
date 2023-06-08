@@ -1,7 +1,7 @@
 color="\e[32m"
 nocolor="${nocolor}"
 log_file="/tmp/roboshop.log"
-app_path="/app"
+app_path="${app_path}"
 
 app_presetup() {
   echo -e "$color adding user $nocolor"
@@ -82,5 +82,20 @@ maven() {
 
 
   systemd_setup
+
+}
+
+python() {
+  echo -e "${color} installing python ${nocolor}"
+  yum install python36 gcc python3-devel -y &>>${log_file}
+
+  app_presetup
+
+  echo -e "${color} downloading the dependencies here ${nocolor}"
+  pip3.6 install -r requirements.txt  &>>${log_file}
+
+  systemd_setup
+
+
 
 }
