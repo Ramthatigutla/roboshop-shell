@@ -19,7 +19,7 @@ app_presetup() {
   fi
   stat_check $?
 
-  echo -e "$color application directory$nocolor"
+  echo -e "$color application directory ${nocolor}"
   rm -rf ${app_path} &>>${log_file}
   mkdir ${app_path}
 
